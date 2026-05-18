@@ -5,73 +5,77 @@ import { Check, ArrowRight, Zap, Crown, Building2 } from "lucide-react";
 
 const PLANS = [
   {
-    name: "Physician Starter",
+    name: "Advisor Starter",
     icon: Zap,
     price: "$1,997",
     period: "/month",
     annualPrice: "$19,970",
     annualSavings: "Save $3,994/yr",
-    description: "For physicians beginning their tax-free wealth journey. Ideal for residents and early-career attendings.",
+    description: "For independent financial advisors looking to add tax-free wealth strategies to their practice. Serve up to 25 clients.",
     features: [
+      "White-Label Calibrate System",
+      "10 Wealth Genome Types Engine",
       "Student Loan Optimization Engine",
-      "Basic Roth Conversion Ladder",
+      "Basic Roth Conversion Ladder Tools",
       "Tax Bracket Analyzer",
       "1 Strategy Session / Month",
-      "Physician Financial Health Score",
+      "Client Portal (25 clients)",
       "Email Support",
-      "Basic Retirement Projections",
-      "Document Vault (10 docs)",
+      "Basic Reporting Dashboard",
+      "Your Branding on Client Materials",
     ],
     cta: "Start Free Assessment",
     popular: false,
   },
   {
-    name: "Physician Professional",
+    name: "Advisor Professional",
     icon: Crown,
     price: "$5,997",
     period: "/month",
     annualPrice: "$59,970",
     annualSavings: "Save $11,994/yr",
-    description: "Full tax elimination suite for established physicians earning $400K+. Our most popular plan.",
+    description: "Full tax elimination platform for established advisory firms. Unlimited clients. All 15 patent engines. Our most popular plan.",
     features: [
       "Everything in Starter, plus:",
       "Infinite Banking Engine",
-      "Captive Insurance Setup & Management",
+      "Captive Insurance Setup Tools",
       "Advanced Roth Conversion Ladders",
       "Real Estate Tax Shelter Engine",
       "Mortgage Killer Strategy",
       "4 Strategy Sessions / Month",
-      "Dedicated Physician Advisor",
-      "Tax-Free Retirement Waterfall",
+      "Unlimited Client Portal",
+      "AI-Powered Wealth Genome Scoring",
       "Priority Support",
-      "Unlimited Document Vault",
-      "Quarterly Tax Review",
+      "Custom Advisor Dashboard",
+      "Quarterly Platform Updates",
+      "Co-Branded Marketing Materials",
     ],
     cta: "Book Strategy Call",
     popular: true,
   },
   {
-    name: "Physician Enterprise",
+    name: "Advisor Enterprise",
     icon: Building2,
     price: "$15,997",
     period: "/month",
     annualPrice: "$159,970",
     annualSavings: "Save $31,994/yr",
-    description: "For practice owners, surgical groups, and physicians with $1M+ income seeking complete tax elimination.",
+    description: "For multi-advisor firms, RIAs, and broker-dealers seeking full platform licensing with custom integrations.",
     features: [
       "Everything in Professional, plus:",
-      "Multi-Entity Captive Insurance",
-      "Oil & Gas Tax Shelters",
-      "Cost Segregation Analysis",
+      "Multi-Advisor Team Access",
+      "Oil & Gas Tax Shelter Engine",
+      "Cost Segregation Analysis Tools",
       "1031 Exchange Optimization",
-      "Dynasty Trust Planning",
+      "Dynasty Trust Planning Engine",
       "Premium Financing Strategies",
       "Weekly Strategy Sessions",
-      "White-Glove Concierge Service",
+      "White-Glove Onboarding",
       "Custom Patent Engine Access",
-      "Estate Tax Elimination",
-      "Family Office Integration",
+      "API Access & CRM Integration",
+      "Dedicated Account Manager",
       "24/7 Priority Access",
+      "Custom Compliance Workflows",
     ],
     cta: "Schedule Executive Briefing",
     popular: false,
@@ -79,19 +83,20 @@ const PLANS = [
 ];
 
 const COMPARISON = [
-  { feature: "Student Loan Optimizer", starter: true, pro: true, enterprise: true },
+  { feature: "Client Capacity", starter: "25 clients", pro: "Unlimited", enterprise: "Unlimited + Team" },
+  { feature: "Wealth Genome Calibration", starter: true, pro: true, enterprise: true },
   { feature: "Roth Conversion Ladders", starter: "Basic", pro: "Advanced", enterprise: "Advanced" },
-  { feature: "Infinite Banking", starter: false, pro: true, enterprise: true },
-  { feature: "Captive Insurance", starter: false, pro: "Single Entity", enterprise: "Multi-Entity" },
+  { feature: "Infinite Banking Engine", starter: false, pro: true, enterprise: true },
+  { feature: "Captive Insurance Tools", starter: false, pro: "Single Entity", enterprise: "Multi-Entity" },
   { feature: "Real Estate Tax Shelters", starter: false, pro: true, enterprise: true },
   { feature: "Oil & Gas Strategies", starter: false, pro: false, enterprise: true },
   { feature: "Cost Segregation", starter: false, pro: false, enterprise: true },
   { feature: "1031 Exchange Engine", starter: false, pro: false, enterprise: true },
-  { feature: "Tax-Free Retirement Waterfall", starter: false, pro: true, enterprise: true },
-  { feature: "Estate Planning", starter: false, pro: "Basic", enterprise: "Dynasty Trust" },
+  { feature: "White-Label Branding", starter: "Basic", pro: "Full", enterprise: "Custom" },
   { feature: "Strategy Sessions", starter: "1/mo", pro: "4/mo", enterprise: "Weekly" },
-  { feature: "Dedicated Advisor", starter: false, pro: true, enterprise: true },
   { feature: "Patent Engine Access", starter: "2 Engines", pro: "8 Engines", enterprise: "All 15" },
+  { feature: "API & CRM Integration", starter: false, pro: false, enterprise: true },
+  { feature: "Multi-Advisor Access", starter: false, pro: false, enterprise: true },
   { feature: "Support Level", starter: "Email", pro: "Priority", enterprise: "24/7 Concierge" },
 ];
 
@@ -107,10 +112,10 @@ export default function Pricing() {
             <span className="text-xs text-primary font-medium">Transparent Pricing — No Hidden Fees</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-            Invest in <span className="text-primary text-glow">Tax Freedom</span>
+            License the <span className="text-primary text-glow">Tax-Free Wealth Platform</span>
           </h1>
           <p className="text-lg text-muted-foreground">
-            Every dollar you invest in our engines returns 10-50x in tax savings. Choose the plan that matches your income level and goals.
+            Add patent-pending tax elimination engines to your advisory practice. Every dollar your clients save strengthens your retention and AUM growth.
           </p>
         </div>
       </section>
@@ -175,20 +180,20 @@ export default function Pricing() {
           <div className="max-w-4xl mx-auto text-center space-y-4">
             <h3 className="text-2xl font-bold text-foreground">The Math is Simple</h3>
             <p className="text-muted-foreground">
-              A physician earning $500K pays approximately $175K in annual taxes. Our Professional plan costs $59,970/year and typically saves $120K-$175K in year one alone.
+              An advisor with 50 physician clients averaging $400K income can generate $6M+ in collective tax savings annually. Your Professional license costs $59,970/year — that's less than the savings from a single client.
             </p>
             <div className="grid sm:grid-cols-3 gap-6 pt-4">
               <div className="space-y-1">
-                <p className="stat-number text-2xl">8-12x</p>
-                <p className="text-xs text-muted-foreground">Average First-Year ROI</p>
+                <p className="stat-number text-2xl">100x+</p>
+                <p className="text-xs text-muted-foreground">Platform ROI for Your Practice</p>
               </div>
               <div className="space-y-1">
                 <p className="stat-number text-2xl">$2.4M</p>
-                <p className="text-xs text-muted-foreground">Avg. 10-Year Tax Savings</p>
+                <p className="text-xs text-muted-foreground">Avg. Client 10-Year Tax Savings</p>
               </div>
               <div className="space-y-1">
                 <p className="stat-number text-2xl">97%</p>
-                <p className="text-xs text-muted-foreground">Client Retention Rate</p>
+                <p className="text-xs text-muted-foreground">Advisor Retention Rate</p>
               </div>
             </div>
           </div>
@@ -233,9 +238,9 @@ export default function Pricing() {
       {/* Guarantee */}
       <section className="container pb-20">
         <div className="max-w-3xl mx-auto glow-card p-8 text-center space-y-4">
-          <h3 className="text-xl font-bold text-foreground">90-Day Tax Savings Guarantee</h3>
+          <h3 className="text-xl font-bold text-foreground">90-Day Revenue Guarantee</h3>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            If we don't identify at least $50,000 in actionable tax savings within your first 90 days, we'll refund your entire investment. No questions asked. We've never had to issue this refund.
+            If you don't generate at least $50,000 in new client tax savings within your first 90 days using our platform, we'll refund your entire investment. No questions asked. We've never had to issue this refund.
           </p>
           <Link href="/contact" className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:underline">
             Start Risk-Free <ArrowRight size={14} />
