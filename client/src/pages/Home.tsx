@@ -101,6 +101,9 @@ export default function Home() {
                 <Link href="/case-studies" className="inline-flex items-center gap-2 px-6 py-3 border border-border text-foreground font-medium rounded-lg hover:bg-accent transition-all">
                   See Results
                 </Link>
+                <Link href="/calibrate" className="inline-flex items-center gap-2 px-6 py-3 border border-primary/40 text-primary font-medium rounded-lg hover:bg-primary/10 transition-all">
+                  <Zap size={16} /> Discover Your Wealth Genome
+                </Link>
               </div>
             </div>
             <div className="lg:col-span-2">

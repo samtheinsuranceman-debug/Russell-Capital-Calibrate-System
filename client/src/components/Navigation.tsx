@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X, Shield } from "lucide-react";
 
-const NAV_LINKS = [
+const NAV_LINKS: { href: string; label: string; highlight?: boolean }[] = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/pricing", label: "Pricing" },
@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { href: "/advisors", label: "Advisors" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
+  { href: "/calibrate", label: "Calibrate", highlight: true },
 ];
 
 export default function Navigation() {
@@ -38,9 +39,11 @@ export default function Navigation() {
               key={link.href}
               href={link.href}
               className={`px-3 py-2 text-sm rounded-md transition-all duration-200 ${
-                location === link.href
-                  ? "text-primary bg-primary/10 font-medium"
-                  : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                link.highlight
+                  ? "text-emerald-400 bg-emerald-400/10 border border-emerald-400/30 font-medium hover:bg-emerald-400/20"
+                  : location === link.href
+                    ? "text-primary bg-primary/10 font-medium"
+                    : "text-muted-foreground hover:text-foreground hover:bg-accent"
               }`}
             >
               {link.label}

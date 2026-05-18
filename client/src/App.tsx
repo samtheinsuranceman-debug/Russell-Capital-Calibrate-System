@@ -12,6 +12,7 @@ import FAQ from "./pages/FAQ";
 import Advisors from "./pages/Advisors";
 import Testimonials from "./pages/Testimonials";
 import Contact from "./pages/Contact";
+import Calibrate from "./pages/Calibrate";
 
 function Router() {
   return (
@@ -24,6 +25,7 @@ function Router() {
       <Route path="/advisors" component={Advisors} />
       <Route path="/testimonials" component={Testimonials} />
       <Route path="/contact" component={Contact} />
+      <Route path="/calibrate" component={Calibrate} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
