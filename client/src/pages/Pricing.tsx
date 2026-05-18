@@ -7,10 +7,10 @@ const PLANS = [
   {
     name: "Physician Starter",
     icon: Zap,
-    price: "$997",
+    price: "$1,997",
     period: "/month",
-    annualPrice: "$9,970",
-    annualSavings: "Save $1,994/yr",
+    annualPrice: "$19,970",
+    annualSavings: "Save $3,994/yr",
     description: "For physicians beginning their tax-free wealth journey. Ideal for residents and early-career attendings.",
     features: [
       "Student Loan Optimization Engine",
@@ -28,10 +28,10 @@ const PLANS = [
   {
     name: "Physician Professional",
     icon: Crown,
-    price: "$2,997",
+    price: "$5,997",
     period: "/month",
-    annualPrice: "$29,970",
-    annualSavings: "Save $5,994/yr",
+    annualPrice: "$59,970",
+    annualSavings: "Save $11,994/yr",
     description: "Full tax elimination suite for established physicians earning $400K+. Our most popular plan.",
     features: [
       "Everything in Starter, plus:",
@@ -53,10 +53,10 @@ const PLANS = [
   {
     name: "Physician Enterprise",
     icon: Building2,
-    price: "$7,997",
+    price: "$15,997",
     period: "/month",
-    annualPrice: "$79,970",
-    annualSavings: "Save $15,994/yr",
+    annualPrice: "$159,970",
+    annualSavings: "Save $31,994/yr",
     description: "For practice owners, surgical groups, and physicians with $1M+ income seeking complete tax elimination.",
     features: [
       "Everything in Professional, plus:",
@@ -175,7 +175,7 @@ export default function Pricing() {
           <div className="max-w-4xl mx-auto text-center space-y-4">
             <h3 className="text-2xl font-bold text-foreground">The Math is Simple</h3>
             <p className="text-muted-foreground">
-              A physician earning $500K pays approximately $175K in annual taxes. Our Professional plan costs $29,970/year and typically saves $120K-$175K in year one alone.
+              A physician earning $500K pays approximately $175K in annual taxes. Our Professional plan costs $59,970/year and typically saves $120K-$175K in year one alone.
             </p>
             <div className="grid sm:grid-cols-3 gap-6 pt-4">
               <div className="space-y-1">
