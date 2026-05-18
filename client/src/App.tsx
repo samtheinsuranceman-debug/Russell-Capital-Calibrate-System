@@ -13,6 +13,9 @@ import Advisors from "./pages/Advisors";
 import Testimonials from "./pages/Testimonials";
 import Contact from "./pages/Contact";
 import Calibrate from "./pages/Calibrate";
+import DemoWarroom from "./pages/DemoWarroom";
+import DemoFolio from "./pages/DemoFolio";
+import DemoBlueprint from "./pages/DemoBlueprint";
 
 function Router() {
   return (
@@ -26,6 +29,9 @@ function Router() {
       <Route path="/testimonials" component={Testimonials} />
       <Route path="/contact" component={Contact} />
       <Route path="/calibrate" component={Calibrate} />
+      <Route path="/demo-warroom" component={DemoWarroom} />
+      <Route path="/demo-folio" component={DemoFolio} />
+      <Route path="/demo-blueprint" component={DemoBlueprint} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
