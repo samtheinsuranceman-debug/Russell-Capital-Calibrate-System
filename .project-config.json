@@ -1,0 +1,35 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [],
+  "dev_command": "pnpm run dev",
+  "env_vars": {},
+  "experiments": null,
+  "git_remote": {
+    "repo_url": "s3://vida-prod-gitrepo/webdev-git/310519663488147919/aw9gfzKTnxGzHcFkredpny",
+    "access_key_id": "ASIAZV3A2ECZKDXEOURO",
+    "secret_access_key": "yJ02gvnmMTw8VDIbDDOvQvsExPceO3mtE9P8h6xS",
+    "session_token": "IQoJb3JpZ2luX2VjEPn//////////wEaCXVzLWVhc3QtMSJHMEUCIQCy5pzp3DQjV5HizFVB6ycC13XPI2CtGvr9F+9WaxXSRwIgAp7wIzAguuSB0a489mLqP4Sd36ODSuCKOAPFaPAtpP0q/wMIwf//////////ARAEGgw2NjUzODYwOTg4NjYiDHpJPRyjj5Fxg59SHyrTAw9JB0nPwP17ApgV2NlPfHxWayjO2o1GEQ//54ltcGKexD+rSJmBwMKl9hfzW32HaydYmzDhg7grTgFgo2P+FJN7ykVTx0Hj03QE2rUbgerePI8U1qDDi+zYOq8qV8WW1XBzJzVtv0yQdNlRL8/vrBH7+qtWBtYyINbcrIRP3yxez1dRch8Yc+zgtrp1mmsa6A6VgbaIZ5qaN/DCsUqf/9VLtfkloon+uT3WrhtrpxV4EAjCYi2HdZdKVT8CO58UfDnvKd42zoIz1jVIQ758aXUPtkFkvHbhH+Q5gKEWjaHFYPrYp8LYKjBeFS2gC5XTeCRf9+nLVcVpZ+KtcLgucmICXpPhFYYmevR5JIVaLFH5IuTLovYpA+OuVcPsKNmZKqVpRHCWzahyrE1jxPfIlxGIBhSJmHWcqT2T2fUmf2pohZUcCbN0Ju4PLCPOMuU3vAiJGYuqd/tdxss7W0vzZpEieRAECzQFiuKvGuACtal+wyLXjKgeDLdhpfa5sLXYwliq8pGQorgfNs1r9rxF/NaHxqXuMGFijY2nhzNOHiY/YosD7I6ZTA6oTe9AkwIdOzI7ExRpmfrGe7+8kuJN32CqBgOFYa6K9GQXVlJsF9Q8tW0cMPTyrNAGOp0B+Tz6iXw9YFaIsBPRTOIwuGqKRaSAUxMPjzkX+nuxnsA2brPEcDtis9+qapwjfhmAf+C28Emf6kGbXMfW3m1uHzHwK/8o8E+XQQp23F9wG1/edO9Op7isCleB7FzT0CimAcrxLEeVvVEIu8q+6nW/7d0855tOBJvedChy3jm9WNYL6EgqGylXzrms75+/sQV4aGt79r+2km2iGCML8Q==",
+    "expiration": "2026-05-19T04:08:20.000Z"
+  },
+  "name": "russell-capital-solutions",
+  "path": "/home/ubuntu/russell-capital-solutions",
+  "port": 3000,
+  "secrets": {
+    "BUILT_IN_FORGE_API_KEY": "2o3K5rW3gdnjieSVFzWPT8",
+    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
+    "JWT_SECRET": "BvwBsm5FDSAYSCRgAxtAev",
+    "OAUTH_SERVER_URL": "https://api.manus.im",
+    "OWNER_NAME": "Samuel A. Russell V",
+    "OWNER_OPEN_ID": "35xGvu9ccLeTAEhs78edQn",
+    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
+    "VITE_ANALYTICS_WEBSITE_ID": "343bc4a8-ea4e-438f-a232-3f1101eb5f88",
+    "VITE_APP_ID": "aw9gfzKTnxGzHcFkredpny",
+    "VITE_APP_LOGO": "",
+    "VITE_APP_TITLE": "Russell Capital Solutions",
+    "VITE_FRONTEND_FORGE_API_KEY": "2xbYy9A9qErS4u9fZHWtVu",
+    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
+  },
+  "template_id": "web-static",
+  "test_command": "pnpm test"
+}
