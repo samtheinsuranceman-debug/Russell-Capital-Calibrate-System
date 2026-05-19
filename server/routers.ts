@@ -183,7 +183,7 @@ export function registerRoutes(router: any) {
       await db.logBehavioralEvent({
         clientId,
         sessionId,
-        eventCategory: "session_start",
+        eventCategory: "engagement",
         eventType: "calibration_initiated",
         eventData: JSON.stringify({ sessionType: sessionType || "standard" }),
       });
@@ -311,7 +311,7 @@ export function registerRoutes(router: any) {
       await db.logBehavioralEvent({
         clientId: session.clientId,
         sessionId,
-        eventCategory: "session_complete",
+        eventCategory: "conversion",
         eventType: "genome_generated",
         eventData: JSON.stringify({ genomeType, profileId }),
       });
