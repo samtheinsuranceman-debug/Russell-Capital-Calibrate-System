@@ -1,6 +1,18 @@
-# Web App Template (Static Frontend)
+# Russell Capital Calibrate System
 
-Pure React 19 + Tailwind 4 template with shadcn/ui baked in. **Use this README as the checklist for shipping static experiences.**
+Complete architecture for the Russell Capital Calibrate System — multi-sensory behavioral intelligence + vision board onboarding experience. Patent-rich differentiator for Russell Capital Solutions.
+
+## Documentation
+
+- [DrBuddy + AltarAI Integration Architecture](docs/drbuddy-altar-link.md) — Bidirectional sync between health intelligence, agentic memory, and Wealth Genome
+- [Sheldrake Consciousness Evolution](docs/sheldrake-consciousness-evolution.md) — Intelligence vs. consciousness mapping across Sheldrake corpus → 200Q calibration
+- [Continuity Report 2026-05-19](docs/continuity-2026-05-19-russell.md) — Session wins, architecture state, next priorities
+
+---
+
+## Technical Stack
+
+Pure React 19 + Tailwind 4 template with shadcn/ui baked in.
 
 > **Note:** This template includes a minimal `shared/` and `server/` directory with placeholder types to support imported templates. These are just compatibility placeholders - web-static remains a true static-only template without API functionality.
 
