@@ -9,6 +9,8 @@ Complete architecture for the Russell Capital Calibrate System — multi-sensory
 - [Continuity Report 2026-05-19](docs/continuity-2026-05-19-russell.md) — Session wins, architecture state, next priorities
 - [Document Analysis Architecture](docs/document-analysis-architecture.md) — AlterAI reverse-engineered dual-AI skeptical analysis pipeline
 - [Mem0 Production Memory Architecture](docs/mem0-architecture.md) — Graph+embedding hybrid persistent memory layer across 7 platform namespaces
+- [X30 Master Agentic Architecture](docs/x30-master-agentic-architecture.md) — Full reverse-engineering spec: Mem0Bus + CrewAI + OpenRouter + JohnSnowLabs unified brain
+- [Mem0 Self-Hosted Clone Spec](docs/mem0-self-hosted-clone.md) — Qdrant/Weaviate/pgvector self-hosted replacement with Docker-compose deployment
 
 ---
 
