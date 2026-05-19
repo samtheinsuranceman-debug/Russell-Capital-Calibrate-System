@@ -24,6 +24,13 @@ Patent ideas #16-30 fully built: Polypharmacy Cascade Risk, Chronotherapy Optimi
 
 Full dual-AI integration: sentiment detection, difficulty adaptation, state-aware privacy rights, Dr. Buddy clinical analysis with Grok. Conservative consensus logic (takes higher risk level). 55 tests.
 
+### 6. Document Analysis Pipeline + Narrative Comparison (AlterAI Reverse-Engineering)
+
+Reverse-engineered AlterAI's two highest-value structures and built them with dual-AI enhancement:
+- **Document Analysis Pipeline**: PDF/text → conflict of interest detection, statistical validity scoring, sample size critique, conclusion-data alignment, bias assessment. Dual-AI skeptical merge (lower scores win = more cautious).
+- **Multi-Source Narrative Comparison**: 6-perspective analysis (pharma-funded, independent, government, academic, media, patient advocacy). Grok uncensored layer specifically prompted for suppressed evidence and pharmaceutical manipulation detection.
+- Both wired as `documentAnalysis.analyzeDocument` + `documentAnalysis.compareNarratives` in Russell Labs.
+
 ## Architecture State
 
 ```
@@ -33,6 +40,8 @@ Russell Labs (russell-ai) — 344 tests passing, 0 TypeScript errors
 ├── 15 Medication Intelligence Systems (patent-grade)
 ├── MorphicResonance particle animations (voice phase + Genome Reveal)
 ├── Agentic Memory Bus (internal, Altar-ready)
+├── Document Analysis Pipeline (dual-AI skeptical merge)
+├── Multi-Source Narrative Comparison (6 perspectives + suppressed evidence)
 ├── Email capture → Session save/resume → Genome Reveal flow
 └── Full compliance stack (HIPAA, FDA, 50-state privacy)
 ```
