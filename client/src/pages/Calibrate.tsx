@@ -3,6 +3,7 @@
  * Design: Full-screen immersive dark experience with breathing animations,
  * progressive visual intensity, and emerald glow reveals.
  * Architecture: 7-step flow condensed from the 11-section Session One script.
+ * API Integration: All responses persisted to backend in real-time.
  */
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -12,6 +13,7 @@ import {
   Brain, Crown, Compass, Scale, Flame, Minimize2,
   TrendingUp, Building, Bitcoin, DollarSign, Activity
 } from "lucide-react";
+import { startCalibrationSession, submitResponse, completeCalibration } from "@/lib/calibration-api";
 
 // ─── WEALTH GENOME TYPES ───────────────────────────────────────────────────────
 interface WealthGenomeType {
@@ -825,7 +827,7 @@ function GenomeRevealStep({ genome, onNext }: { genome: WealthGenomeType; onNext
 }
 
 // Step 8: Advisor Handoff
-function HandoffStep({ genome }: { genome: WealthGenomeType }) {
+function HandoffStep({ genome, sessionId, clientId }: { genome: WealthGenomeType; sessionId: number | null; clientId: number | null }) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -838,7 +840,9 @@ function HandoffStep({ genome }: { genome: WealthGenomeType }) {
       (window as any).umami.track('calibrate_complete', { 
         genome: genome.id,
         name,
-        email 
+        email,
+        sessionId,
+        clientId,
       });
     }
     setSubmitted(true);
@@ -942,25 +946,85 @@ export default function Calibrate() {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [genome, setGenome] = useState<WealthGenomeType | null>(null);
+  
+  // API session state
+  const [sessionId, setSessionId] = useState<number | null>(null);
+  const [clientId, setClientId] = useState<number | null>(null);
+  const startTimeRef = useRef<number>(Date.now());
+  const responseCountRef = useRef<number>(0);
 
-  const handleAnswer = useCallback((questionId: string, value: string) => {
-    setAnswers(prev => ({ ...prev, [questionId]: value }));
+  // Initialize session when user clicks "Begin Calibration"
+  const handleBegin = useCallback(async () => {
+    setStep(1);
+    startTimeRef.current = Date.now();
+    // Fire-and-forget: create session in background
+    const result = await startCalibrationSession({});
+    if (result) {
+      setSessionId(result.sessionId);
+      setClientId(result.clientId);
+    }
   }, []);
 
-  const valuesQuestions = QUESTIONS.filter(q => q.phase === "values");
-  const riskQuestions = QUESTIONS.filter(q => q.phase === "risk");
-  const goalsQuestions = QUESTIONS.filter(q => q.phase === "goals");
-  const styleQuestions = QUESTIONS.filter(q => q.phase === "style");
+  // Handle answer selection with API persistence
+  const handleAnswer = useCallback((questionId: string, value: string) => {
+    setAnswers(prev => ({ ...prev, [questionId]: value }));
+    
+    // Persist to backend (fire-and-forget)
+    if (sessionId) {
+      const question = QUESTIONS.find(q => q.id === questionId);
+      responseCountRef.current += 1;
+      submitResponse({
+        sessionId,
+        questionId,
+        questionCategory: question?.phase || "values",
+        responseValue: value,
+        responseType: "choice",
+        responseTimeMs: null,
+        sequenceOrder: responseCountRef.current,
+      });
+    }
+  }, [sessionId]);
 
-  const handleReveal = () => {
+  // Handle genome reveal with API completion
+  const handleReveal = useCallback(async () => {
     const result = calculateGenome(answers);
     setGenome(result);
     setStep(7);
+    
     // Track genome reveal
     if (typeof window !== 'undefined' && (window as any).umami) {
       (window as any).umami.track('genome_revealed', { genome: result.id });
     }
-  };
+
+    // Persist completion to backend (fire-and-forget)
+    if (sessionId && clientId) {
+      const durationSeconds = Math.round((Date.now() - startTimeRef.current) / 1000);
+      // Convert genome id format: "quiet-strategist" → "quiet_strategist"
+      const genomeType = result.id.replace(/-/g, "_");
+      
+      // Calculate phase scores from answers
+      const phaseScores = { values: 0, risk: 0, goals: 0, decisionStyle: 0 };
+      Object.entries(answers).forEach(([qId, val]) => {
+        const q = QUESTIONS.find(qu => qu.id === qId);
+        if (!q) return;
+        const opt = q.options.find(o => o.value === val);
+        if (!opt) return;
+        const maxScore = Math.max(...Object.values(opt.scores));
+        if (q.phase === "values") phaseScores.values += maxScore;
+        else if (q.phase === "risk") phaseScores.risk += maxScore;
+        else if (q.phase === "goals") phaseScores.goals += maxScore;
+        else if (q.phase === "style") phaseScores.decisionStyle += maxScore;
+      });
+
+      completeCalibration({
+        sessionId,
+        clientId,
+        genomeType,
+        scores: phaseScores,
+        durationSeconds,
+      });
+    }
+  }, [answers, sessionId, clientId]);
 
   return (
     <div className="min-h-screen bg-[oklch(0.08_0.015_260)] relative overflow-hidden">
@@ -976,12 +1040,12 @@ export default function Calibrate() {
       </div>
 
       <AnimatePresence mode="wait">
-        {step === 0 && <WelcomeStep key="welcome" onNext={() => setStep(1)} />}
+        {step === 0 && <WelcomeStep key="welcome" onNext={handleBegin} />}
         {step === 1 && <BreathingStep key="breathing" onNext={() => setStep(2)} />}
         {step === 2 && (
           <QuestionStep
             key="values"
-            questions={valuesQuestions}
+            questions={QUESTIONS.filter(q => q.phase === "values")}
             phaseLabel="Phase I — Values & Vision"
             phaseNumber={1}
             answers={answers}
@@ -993,7 +1057,7 @@ export default function Calibrate() {
         {step === 3 && (
           <QuestionStep
             key="risk"
-            questions={riskQuestions}
+            questions={QUESTIONS.filter(q => q.phase === "risk")}
             phaseLabel="Phase II — Risk & Protection"
             phaseNumber={2}
             answers={answers}
@@ -1005,7 +1069,7 @@ export default function Calibrate() {
         {step === 4 && (
           <QuestionStep
             key="goals"
-            questions={goalsQuestions}
+            questions={QUESTIONS.filter(q => q.phase === "goals")}
             phaseLabel="Phase III — Goals & Legacy"
             phaseNumber={3}
             answers={answers}
@@ -1017,7 +1081,7 @@ export default function Calibrate() {
         {step === 5 && (
           <QuestionStep
             key="style"
-            questions={styleQuestions}
+            questions={QUESTIONS.filter(q => q.phase === "style")}
             phaseLabel="Phase IV — Decision Architecture"
             phaseNumber={4}
             answers={answers}
@@ -1028,7 +1092,7 @@ export default function Calibrate() {
         )}
         {step === 6 && <FutureSelfStep key="future" onNext={handleReveal} />}
         {step === 7 && genome && <GenomeRevealStep key="reveal" genome={genome} onNext={() => setStep(8)} />}
-        {step === 8 && genome && <HandoffStep key="handoff" genome={genome} />}
+        {step === 8 && genome && <HandoffStep key="handoff" genome={genome} sessionId={sessionId} clientId={clientId} />}
       </AnimatePresence>
     </div>
   );
