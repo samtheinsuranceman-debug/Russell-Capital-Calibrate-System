@@ -1,7 +1,6 @@
 import * as db from "./db.js";
 
 // ============ GENOME METADATA ============
-
 const GENOME_METADATA: Record<string, {
   displayName: string;
   coreEssence: string;
@@ -28,201 +27,201 @@ const GENOME_METADATA: Record<string, {
   },
   freedom_architect: {
     displayName: "The Freedom Architect",
-    coreEssence: "Financial independence is your north star. You design systems that generate freedom, not obligations.",
-    strategyTilt: "Aggressive growth with income independence focus",
-    iul: 7, stocksBonds: 6, realEstate: 7, crypto: 5,
-    overallProfile: "growth_aggressive",
+    coreEssence: "You design systems that generate wealth without consuming your time. Freedom is your ultimate currency.",
+    strategyTilt: "Passive income streams and lifestyle optimization",
+    iul: 7, stocksBonds: 3, realEstate: 8, crypto: 4,
+    overallProfile: "passive_income",
   },
   steady_guardian: {
     displayName: "The Steady Guardian",
-    coreEssence: "Protection and certainty are your foundations. You sleep well knowing your family is secured against any storm.",
-    strategyTilt: "Capital preservation with guaranteed income streams",
-    iul: 9, stocksBonds: 7, realEstate: 4, crypto: 1,
-    overallProfile: "conservative_stable",
+    coreEssence: "You protect what matters most. Your approach to wealth is methodical, secure, and deeply responsible.",
+    strategyTilt: "Capital preservation with steady income generation",
+    iul: 9, stocksBonds: 7, realEstate: 5, crypto: 1,
+    overallProfile: "capital_preservation",
   },
   bold_weaver: {
     displayName: "The Bold Weaver",
-    coreEssence: "You see connections others miss and act decisively. Complexity is your playground, not your enemy.",
-    strategyTilt: "Sophisticated leverage and multi-strategy approach",
-    iul: 6, stocksBonds: 7, realEstate: 5, crypto: 7,
-    overallProfile: "aggressive_diversified",
+    coreEssence: "You see connections others cannot. Your wealth strategy weaves together unconventional opportunities into a powerful tapestry.",
+    strategyTilt: "Multi-strategy integration with calculated risk",
+    iul: 6, stocksBonds: 5, realEstate: 7, crypto: 6,
+    overallProfile: "multi_strategy",
   },
   intuitive_alchemist: {
     displayName: "The Intuitive Alchemist",
-    coreEssence: "Your gut has made you millions. You trust your instincts and they reward you with outsized returns.",
-    strategyTilt: "Flexible allocation following market intuition",
-    iul: 5, stocksBonds: 6, realEstate: 7, crypto: 4,
-    overallProfile: "moderate_flexible",
+    coreEssence: "You transform ordinary opportunities into extraordinary wealth. Your intuition guides you to hidden value.",
+    strategyTilt: "Alternative investments and emerging opportunities",
+    iul: 5, stocksBonds: 3, realEstate: 6, crypto: 8,
+    overallProfile: "alternative_growth",
   },
   family_sovereign: {
     displayName: "The Family Sovereign",
-    coreEssence: "Your family is your empire. Every financial structure serves the sovereignty of your household.",
-    strategyTilt: "Family-controlled structures and infinite banking",
-    iul: 10, stocksBonds: 3, realEstate: 8, crypto: 1,
-    overallProfile: "family_controlled",
+    coreEssence: "Your family is your kingdom. Every financial decision strengthens the dynasty you are building.",
+    strategyTilt: "Family wealth protection and education funding",
+    iul: 9, stocksBonds: 6, realEstate: 7, crypto: 1,
+    overallProfile: "family_dynasty",
   },
   calculated_creator: {
     displayName: "The Calculated Creator",
-    coreEssence: "Numbers don't lie, and neither do you. Every basis point matters in your precisely engineered wealth machine.",
-    strategyTilt: "Quantitative optimization and tax arbitrage",
-    iul: 7, stocksBonds: 8, realEstate: 6, crypto: 3,
-    overallProfile: "analytical_optimized",
+    coreEssence: "You create wealth through innovation and precision. Every risk is measured, every opportunity is engineered.",
+    strategyTilt: "Growth through innovation with risk management",
+    iul: 6, stocksBonds: 4, realEstate: 5, crypto: 7,
+    overallProfile: "innovation_growth",
   },
   resilient_optimizer: {
     displayName: "The Resilient Optimizer",
-    coreEssence: "You've weathered storms and emerged stronger. Your wealth strategy is anti-fragile by design.",
-    strategyTilt: "Diversified resilience with systematic optimization",
-    iul: 8, stocksBonds: 6, realEstate: 5, crypto: 2,
-    overallProfile: "moderate_resilient",
+    coreEssence: "You find efficiency in everything. Your wealth grows because you eliminate waste and maximize every dollar.",
+    strategyTilt: "Tax optimization and efficiency maximization",
+    iul: 8, stocksBonds: 6, realEstate: 6, crypto: 3,
+    overallProfile: "tax_optimized",
   },
   sovereign_minimalist: {
     displayName: "The Sovereign Minimalist",
-    coreEssence: "Maximum impact, minimum complexity. Your wealth works for you, not the other way around.",
-    strategyTilt: "Simplified high-efficiency structures",
-    iul: 9, stocksBonds: 5, realEstate: 3, crypto: 1,
-    overallProfile: "simple_efficient",
+    coreEssence: "Less is more. You achieve financial sovereignty through simplicity, clarity, and focused execution.",
+    strategyTilt: "Simplified high-impact strategies",
+    iul: 7, stocksBonds: 7, realEstate: 4, crypto: 2,
+    overallProfile: "simplified_growth",
   },
 };
 
-// ============ STRATEGY GENERATION ============
-
+// ============ STRATEGY GENERATION HELPER ============
 function getStrategiesForGenome(genomeType: string) {
-  const strategyMap: Record<string, Array<{
-    type: string;
-    aggressiveness: string;
-    allocation: string;
+  const genome = GENOME_METADATA[genomeType];
+  if (!genome) return [];
+
+  const strategies: Array<{
+    strategyType: string;
+    aggressivenessLevel: string;
+    allocationPercentage: number;
     rationale: string;
-  }>> = {
-    quiet_strategist: [
-      { type: "iul", aggressiveness: "moderate", allocation: "35.00", rationale: "Tax-free growth with downside protection matches your methodical approach" },
-      { type: "roth_ladder", aggressiveness: "low_moderate", allocation: "25.00", rationale: "Systematic tax-bracket optimization over 5-year windows" },
-      { type: "real_estate", aggressiveness: "low_moderate", allocation: "20.00", rationale: "Passive syndication provides diversification without active management" },
-      { type: "stocks_bonds", aggressiveness: "moderate", allocation: "20.00", rationale: "Index-based core for steady compounding" },
-    ],
-    legacy_builder: [
-      { type: "iul", aggressiveness: "mod_aggressive", allocation: "40.00", rationale: "Dynasty-style policy for generational wealth transfer" },
-      { type: "captive_insurance", aggressiveness: "moderate", allocation: "20.00", rationale: "Tax-advantaged risk management protecting legacy assets" },
-      { type: "real_estate", aggressiveness: "moderate", allocation: "25.00", rationale: "Family trust structure builds tangible legacy" },
-      { type: "infinite_banking", aggressiveness: "moderate", allocation: "15.00", rationale: "Whole life foundation for family banking system" },
-    ],
-    freedom_architect: [
-      { type: "iul", aggressiveness: "aggressive", allocation: "30.00", rationale: "Maximum-funded policy for tax-free retirement income" },
-      { type: "crypto", aggressiveness: "aggressive", allocation: "15.00", rationale: "Asymmetric upside aligned with independence mindset" },
-      { type: "real_estate", aggressiveness: "mod_aggressive", allocation: "30.00", rationale: "Short-term rentals create location-independent income" },
-      { type: "stocks_bonds", aggressiveness: "mod_aggressive", allocation: "25.00", rationale: "Growth-oriented portfolio for wealth acceleration" },
-    ],
-    steady_guardian: [
-      { type: "iul", aggressiveness: "cautious", allocation: "40.00", rationale: "Guaranteed policy with living benefits for worst-case protection" },
-      { type: "stocks_bonds", aggressiveness: "cautious", allocation: "30.00", rationale: "Municipal bonds provide tax-free stable income" },
-      { type: "real_estate", aggressiveness: "low_moderate", allocation: "20.00", rationale: "Triple-net leases for reliable income" },
-      { type: "annuity", aggressiveness: "very_low", allocation: "10.00", rationale: "Guaranteed income floor for peace of mind" },
-    ],
-    bold_weaver: [
-      { type: "iul", aggressiveness: "aggressive", allocation: "25.00", rationale: "Premium-financed policy maximizing leverage" },
-      { type: "stocks_bonds", aggressiveness: "aggressive", allocation: "25.00", rationale: "Concentrated growth in disruptive companies" },
-      { type: "crypto", aggressiveness: "very_aggressive", allocation: "20.00", rationale: "DeFi protocols for enhanced yields" },
-      { type: "real_estate", aggressiveness: "mod_aggressive", allocation: "20.00", rationale: "Value-add opportunities with leverage" },
-      { type: "premium_financing", aggressiveness: "aggressive", allocation: "10.00", rationale: "Sophisticated leverage strategy" },
-    ],
-    intuitive_alchemist: [
-      { type: "iul", aggressiveness: "moderate", allocation: "30.00", rationale: "Flexible premium allows variable contributions based on timing" },
-      { type: "real_estate", aggressiveness: "mod_aggressive", allocation: "30.00", rationale: "Value-add properties reward pattern recognition" },
-      { type: "stocks_bonds", aggressiveness: "moderate", allocation: "25.00", rationale: "Sector rotation following market signals" },
-      { type: "crypto", aggressiveness: "moderate", allocation: "15.00", rationale: "Emerging assets for those who trust their read" },
-    ],
-    family_sovereign: [
-      { type: "infinite_banking", aggressiveness: "moderate", allocation: "30.00", rationale: "Family banking system for generational control" },
-      { type: "iul", aggressiveness: "mod_aggressive", allocation: "30.00", rationale: "Tax-free legacy with living benefits" },
-      { type: "real_estate", aggressiveness: "moderate", allocation: "30.00", rationale: "Family-held properties for dynasty building" },
-      { type: "captive_insurance", aggressiveness: "moderate", allocation: "10.00", rationale: "Family-owned risk management entity" },
-    ],
-    calculated_creator: [
-      { type: "iul", aggressiveness: "moderate", allocation: "30.00", rationale: "Optimized premium structure for maximum efficiency" },
-      { type: "stocks_bonds", aggressiveness: "mod_aggressive", allocation: "30.00", rationale: "Factor-based portfolio with tax-loss harvesting" },
-      { type: "real_estate", aggressiveness: "moderate", allocation: "25.00", rationale: "DST and 1031 exchanges for tax deferral" },
-      { type: "roth_ladder", aggressiveness: "moderate", allocation: "15.00", rationale: "Precise bracket management for conversion optimization" },
-    ],
-    resilient_optimizer: [
-      { type: "iul", aggressiveness: "moderate", allocation: "35.00", rationale: "Floor protection with upside participation" },
-      { type: "stocks_bonds", aggressiveness: "moderate", allocation: "25.00", rationale: "All-weather portfolio with tactical tilts" },
-      { type: "real_estate", aggressiveness: "low_moderate", allocation: "25.00", rationale: "Diversified REIT exposure with low correlation" },
-      { type: "annuity", aggressiveness: "low_moderate", allocation: "15.00", rationale: "Income guarantee as portfolio stabilizer" },
-    ],
-    sovereign_minimalist: [
-      { type: "iul", aggressiveness: "mod_aggressive", allocation: "50.00", rationale: "Single powerful vehicle for tax-free growth and income" },
-      { type: "stocks_bonds", aggressiveness: "moderate", allocation: "30.00", rationale: "Simple index fund core for set-and-forget growth" },
-      { type: "real_estate", aggressiveness: "low_moderate", allocation: "20.00", rationale: "One quality property or REIT for diversification" },
-    ],
-  };
-  return strategyMap[genomeType] || strategyMap.quiet_strategist;
+    sequenceOrder: number;
+  }> = [];
+
+  function aggressivenessLabel(score: number): string {
+    if (score <= 2) return "very_low";
+    if (score <= 3) return "cautious";
+    if (score <= 4) return "low_moderate";
+    if (score <= 5) return "moderate";
+    if (score <= 6) return "mod_aggressive";
+    if (score <= 8) return "aggressive";
+    return "very_aggressive";
+  }
+
+  const total = genome.iul + genome.stocksBonds + genome.realEstate + genome.crypto;
+
+  strategies.push({
+    strategyType: "iul",
+    aggressivenessLevel: aggressivenessLabel(genome.iul),
+    allocationPercentage: Math.round((genome.iul / total) * 100),
+    rationale: `Based on your ${genome.displayName} profile, IUL provides ${genome.iul >= 7 ? "strong" : "moderate"} tax-advantaged growth aligned with your ${genome.strategyTilt.toLowerCase()} approach.`,
+    sequenceOrder: 1,
+  });
+
+  strategies.push({
+    strategyType: "stocks_bonds",
+    aggressivenessLevel: aggressivenessLabel(genome.stocksBonds),
+    allocationPercentage: Math.round((genome.stocksBonds / total) * 100),
+    rationale: `Traditional market exposure calibrated to your risk tolerance as a ${genome.displayName}.`,
+    sequenceOrder: 2,
+  });
+
+  strategies.push({
+    strategyType: "real_estate",
+    aggressivenessLevel: aggressivenessLabel(genome.realEstate),
+    allocationPercentage: Math.round((genome.realEstate / total) * 100),
+    rationale: `Real estate allocation designed for ${genome.realEstate >= 7 ? "significant passive income" : "portfolio diversification"} within your wealth blueprint.`,
+    sequenceOrder: 3,
+  });
+
+  strategies.push({
+    strategyType: "crypto",
+    aggressivenessLevel: aggressivenessLabel(genome.crypto),
+    allocationPercentage: Math.round((genome.crypto / total) * 100),
+    rationale: `Digital asset exposure ${genome.crypto >= 5 ? "leveraging emerging opportunities" : "kept minimal for stability"} per your ${genome.displayName} archetype.`,
+    sequenceOrder: 4,
+  });
+
+  return strategies;
 }
 
 // ============ ROUTE HANDLERS ============
-
 export function registerRoutes(router: any) {
+
+  // POST /calibration/start - Start a new calibration session
   router.post("/calibration/start", async (req: any, res: any) => {
     try {
-      const { firstName, lastName, email, phone, specialty, practiceType, sessionType } = req.body;
+      const { email, firstName, lastName, sessionType } = req.body;
 
       if (!email) {
         return res.status(400).json({ error: "Email is required" });
       }
 
+      // Find or create client
       let client = await db.getClientByEmail(email);
-      if (!client) {
-        const clientId = await db.createClient({
-          firstName: firstName || "Unknown",
-          lastName: lastName || "Unknown",
+      let clientId: number;
+
+      if (client) {
+        clientId = client.id;
+      } else {
+        clientId = await db.createClient({
           email,
-          phone: phone || null,
-          specialty: specialty || null,
-          practiceType: practiceType || null,
+          firstName: firstName || null,
+          lastName: lastName || null,
           status: "lead",
         });
-        client = await db.getClientById(clientId);
       }
 
-      if (!client) {
-        return res.status(500).json({ error: "Failed to create client" });
-      }
-
+      // Create calibration session
       const sessionId = await db.createCalibrationSession({
-        clientId: client.id,
-        sessionType: sessionType || "quick",
+        clientId,
+        sessionType: sessionType || "standard",
         state: "initialized",
         currentStep: 0,
         totalSteps: 10,
       });
 
+      // Log behavioral event
       await db.logBehavioralEvent({
-        clientId: client.id,
+        clientId,
         sessionId,
-        eventType: "session_started",
-        eventCategory: "conversion",
-        eventData: { sessionType, source: req.headers?.referer },
+        eventCategory: "session_start",
+        eventType: "calibration_initiated",
+        eventData: JSON.stringify({ sessionType: sessionType || "standard" }),
       });
 
-      res.json({ success: true, sessionId, clientId: client.id });
+      res.json({
+        success: true,
+        sessionId,
+        clientId,
+        state: "initialized",
+        message: "Calibration session started",
+      });
     } catch (error: any) {
-      console.error("[Calibration] Start error:", error);
-      res.status(500).json({ error: error.message });
+      console.error("[API] Error starting calibration:", error);
+      res.status(500).json({ error: "Failed to start calibration session", details: error.message });
     }
   });
 
+  // POST /calibration/respond - Submit a response to a question
   router.post("/calibration/respond", async (req: any, res: any) => {
     try {
       const { sessionId, questionId, questionCategory, responseValue, responseType, responseTimeMs, sequenceOrder } = req.body;
 
-      await db.saveSessionResponse({
+      if (!sessionId || !questionId || !questionCategory || responseValue === undefined) {
+        return res.status(400).json({ error: "Missing required fields: sessionId, questionId, questionCategory, responseValue" });
+      }
+
+      // Save the response
+      const responseId = await db.saveSessionResponse({
         sessionId,
-        questionId: questionId || `q_${sequenceOrder}`,
-        questionCategory: questionCategory || "values",
+        questionId,
+        questionCategory,
         responseValue: String(responseValue),
         responseType: responseType || "choice",
-        responseTimeMs: responseTimeMs || null,
-        sequenceOrder: sequenceOrder || 1,
+        responseTimeMs: responseTimeMs || 0,
+        sequenceOrder: sequenceOrder || 0,
       });
 
+      // Determine next state based on category
       const stateMap: Record<string, string> = {
         values: "values_discovery",
         risk: "risk_assessment",
@@ -231,152 +230,284 @@ export function registerRoutes(router: any) {
         sensory: "breathing_calibration",
         future_self: "future_self_activation",
       };
-      const newState = stateMap[questionCategory] || "values_discovery";
-      await db.updateCalibrationSessionState(sessionId, newState, sequenceOrder || 1);
 
-      res.json({ success: true });
+      const newState = stateMap[questionCategory] || "values_discovery";
+      const step = sequenceOrder || 1;
+
+      await db.updateCalibrationSessionState(sessionId, newState, step);
+
+      res.json({
+        success: true,
+        responseId,
+        state: newState,
+        step,
+      });
     } catch (error: any) {
-      console.error("[Calibration] Respond error:", error);
-      res.status(500).json({ error: error.message });
+      console.error("[API] Error saving response:", error);
+      res.status(500).json({ error: "Failed to save response", details: error.message });
     }
   });
 
+  // POST /calibration/complete - Complete calibration and generate genome
   router.post("/calibration/complete", async (req: any, res: any) => {
     try {
-      const { sessionId, clientId, genomeType, scores, durationSeconds } = req.body;
+      const { sessionId, durationSeconds } = req.body;
 
-      await db.completeCalibrationSession(sessionId, durationSeconds || 0);
-
-      const genomeMeta = GENOME_METADATA[genomeType] || GENOME_METADATA.quiet_strategist;
-
-      const genomeId = await db.createWealthGenomeProfile({
-        clientId,
-        sessionId,
-        genomeType: genomeType || "quiet_strategist",
-        genomeDisplayName: genomeMeta.displayName,
-        coreEssence: genomeMeta.coreEssence,
-        strategyTilt: genomeMeta.strategyTilt,
-        iulAggressiveness: genomeMeta.iul,
-        stocksBondsAggressiveness: genomeMeta.stocksBonds,
-        realEstateAggressiveness: genomeMeta.realEstate,
-        cryptoAggressiveness: genomeMeta.crypto,
-        overallProfile: genomeMeta.overallProfile,
-        valuesScore: scores?.values || null,
-        riskScore: scores?.risk || null,
-        goalsScore: scores?.goals || null,
-        decisionStyleScore: scores?.decisionStyle || null,
-      });
-
-      const strategies = getStrategiesForGenome(genomeType);
-      if (strategies.length > 0) {
-        await db.createStrategyRecommendations(
-          strategies.map((s, i) => ({
-            clientId,
-            genomeProfileId: genomeId,
-            strategyType: s.type,
-            aggressivenessLevel: s.aggressiveness,
-            allocationPercentage: s.allocation,
-            rationale: s.rationale,
-            sequenceOrder: i + 1,
-          }))
-        );
+      if (!sessionId) {
+        return res.status(400).json({ error: "sessionId is required" });
       }
 
-      await db.logBehavioralEvent({
-        clientId,
+      // Get session to find clientId
+      const session = await db.getCalibrationSession(sessionId);
+      if (!session) {
+        return res.status(404).json({ error: "Session not found" });
+      }
+
+      // Get all responses for this session
+      const responses = await db.getSessionResponses(sessionId);
+
+      // Calculate genome type based on responses
+      const genomeType = calculateGenomeType(responses);
+      const genome = GENOME_METADATA[genomeType];
+
+      if (!genome) {
+        return res.status(500).json({ error: "Invalid genome type calculated" });
+      }
+
+      // Complete the session
+      await db.completeCalibrationSession(sessionId, durationSeconds || 0);
+
+      // Create wealth genome profile
+      const profileId = await db.createWealthGenomeProfile({
+        clientId: session.clientId,
         sessionId,
-        eventType: "calibration_completed",
-        eventCategory: "conversion",
-        eventData: { genomeType, durationSeconds },
+        genomeType,
+        genomeDisplayName: genome.displayName,
+        coreEssence: genome.coreEssence,
+        strategyTilt: genome.strategyTilt,
+        iulAggressiveness: genome.iul,
+        stocksBondsAggressiveness: genome.stocksBonds,
+        realEstateAggressiveness: genome.realEstate,
+        cryptoAggressiveness: genome.crypto,
+        overallProfile: genome.overallProfile,
+      });
+
+      // Generate strategy recommendations
+      const strategies = getStrategiesForGenome(genomeType);
+      if (strategies.length > 0) {
+        const strategyRecords = strategies.map((s) => ({
+          clientId: session.clientId,
+          genomeProfileId: profileId,
+          strategyType: s.strategyType,
+          aggressivenessLevel: s.aggressivenessLevel,
+          allocationPercentage: String(s.allocationPercentage),
+          rationale: s.rationale,
+          sequenceOrder: s.sequenceOrder,
+        }));
+        await db.createStrategyRecommendations(strategyRecords);
+      }
+
+      // Log completion event
+      await db.logBehavioralEvent({
+        clientId: session.clientId,
+        sessionId,
+        eventCategory: "session_complete",
+        eventType: "genome_generated",
+        eventData: JSON.stringify({ genomeType, profileId }),
       });
 
       res.json({
         success: true,
-        genomeId,
         genomeType,
-        genomeMeta,
+        genome: {
+          displayName: genome.displayName,
+          coreEssence: genome.coreEssence,
+          strategyTilt: genome.strategyTilt,
+          aggressiveness: {
+            iul: genome.iul,
+            stocksBonds: genome.stocksBonds,
+            realEstate: genome.realEstate,
+            crypto: genome.crypto,
+          },
+          overallProfile: genome.overallProfile,
+        },
+        profileId,
         strategies,
       });
     } catch (error: any) {
-      console.error("[Calibration] Complete error:", error);
-      res.status(500).json({ error: error.message });
+      console.error("[API] Error completing calibration:", error);
+      res.status(500).json({ error: "Failed to complete calibration", details: error.message });
     }
   });
 
+  // GET /calibration/session/:id - Get session details
   router.get("/calibration/session/:id", async (req: any, res: any) => {
     try {
-      const session = await db.getCalibrationSession(parseInt(req.params.id));
+      const sessionId = parseInt(req.params.id);
+      if (isNaN(sessionId)) {
+        return res.status(400).json({ error: "Invalid session ID" });
+      }
+
+      const session = await db.getCalibrationSession(sessionId);
       if (!session) {
         return res.status(404).json({ error: "Session not found" });
       }
-      const responses = await db.getSessionResponses(session.id);
-      res.json({ success: true, session, responses });
+
+      const responses = await db.getSessionResponses(sessionId);
+
+      res.json({
+        success: true,
+        session,
+        responses,
+        responseCount: responses.length,
+      });
     } catch (error: any) {
-      res.status(500).json({ error: error.message });
+      console.error("[API] Error getting session:", error);
+      res.status(500).json({ error: "Failed to get session", details: error.message });
     }
   });
 
-  // ============ CLIENT ENDPOINTS ============
-
-  router.get("/clients/by-email/:email", async (req: any, res: any) => {
-    try {
-      const client = await db.getClientByEmail(decodeURIComponent(req.params.email));
-      if (!client) {
-        return res.status(404).json({ error: "Client not found" });
-      }
-      res.json({ success: true, client });
-    } catch (error: any) {
-      res.status(500).json({ error: error.message });
-    }
-  });
-
+  // GET /clients/:id/genome - Get client's wealth genome profile
   router.get("/clients/:id/genome", async (req: any, res: any) => {
     try {
-      const genome = await db.getClientWealthGenome(parseInt(req.params.id));
-      if (!genome) {
-        return res.status(404).json({ error: "No genome profile found" });
+      const clientId = parseInt(req.params.id);
+      if (isNaN(clientId)) {
+        return res.status(400).json({ error: "Invalid client ID" });
       }
+
+      const genome = await db.getClientWealthGenome(clientId);
+      if (!genome) {
+        return res.status(404).json({ error: "No genome profile found for this client" });
+      }
+
       res.json({ success: true, genome });
     } catch (error: any) {
-      res.status(500).json({ error: error.message });
+      console.error("[API] Error getting genome:", error);
+      res.status(500).json({ error: "Failed to get genome profile", details: error.message });
     }
   });
 
+  // GET /clients/:id/strategies - Get client's strategy recommendations
   router.get("/clients/:id/strategies", async (req: any, res: any) => {
     try {
-      const strategies = await db.getClientStrategies(parseInt(req.params.id));
+      const clientId = parseInt(req.params.id);
+      if (isNaN(clientId)) {
+        return res.status(400).json({ error: "Invalid client ID" });
+      }
+
+      const strategies = await db.getClientStrategies(clientId);
+
       res.json({ success: true, strategies });
     } catch (error: any) {
-      res.status(500).json({ error: error.message });
+      console.error("[API] Error getting strategies:", error);
+      res.status(500).json({ error: "Failed to get strategies", details: error.message });
     }
   });
 
-  // ============ ADVISOR ENDPOINTS ============
-
+  // POST /advisor/notes - Create an advisor note
   router.post("/advisor/notes", async (req: any, res: any) => {
     try {
-      const { clientId, advisorId, noteType, content, isPrivate } = req.body;
-      const noteId = await db.createAdvisorNote({
+      const { clientId, advisorId, sessionId, noteType, content, isPrivate } = req.body;
+
+      if (!clientId || !content) {
+        return res.status(400).json({ error: "clientId and content are required" });
+      }
+
+      const note = await db.createAdvisorNote({
         clientId,
-        advisorId: advisorId || 1,
+        advisorId: advisorId || null,
+        sessionId: sessionId || null,
         noteType: noteType || "general",
         content,
-        isPrivate: isPrivate || false,
+        isPrivate: isPrivate !== undefined ? isPrivate : true,
       });
-      res.json({ success: true, noteId });
+
+      res.json({ success: true, note });
     } catch (error: any) {
-      res.status(500).json({ error: error.message });
+      console.error("[API] Error creating note:", error);
+      res.status(500).json({ error: "Failed to create advisor note", details: error.message });
     }
   });
 
+  // GET /advisor/notes/:clientId - Get advisor notes for a client
   router.get("/advisor/notes/:clientId", async (req: any, res: any) => {
     try {
-      const notes = await db.getClientAdvisorNotes(parseInt(req.params.clientId));
+      const clientId = parseInt(req.params.clientId);
+      if (isNaN(clientId)) {
+        return res.status(400).json({ error: "Invalid client ID" });
+      }
+
+      const notes = await db.getClientAdvisorNotes(clientId);
+
       res.json({ success: true, notes });
     } catch (error: any) {
-      res.status(500).json({ error: error.message });
+      console.error("[API] Error getting notes:", error);
+      res.status(500).json({ error: "Failed to get advisor notes", details: error.message });
     }
   });
+}
+
+// ============ GENOME CALCULATION ============
+function calculateGenomeType(responses: any[]): string {
+  const genomeTypes = Object.keys(GENOME_METADATA);
+
+  if (!responses || responses.length === 0) {
+    return "quiet_strategist";
+  }
+
+  const scores: Record<string, number> = {};
+  genomeTypes.forEach((g) => (scores[g] = 0));
+
+  for (const response of responses) {
+    const val = parseInt(response.responseValue) || 0;
+    const cat = response.questionCategory;
+
+    if (cat === "values") {
+      if (val >= 8) { scores.legacy_builder += 3; scores.family_sovereign += 2; }
+      else if (val >= 5) { scores.quiet_strategist += 2; scores.steady_guardian += 2; }
+      else { scores.freedom_architect += 2; scores.sovereign_minimalist += 2; }
+    }
+
+    if (cat === "risk") {
+      if (val >= 8) { scores.bold_weaver += 3; scores.intuitive_alchemist += 3; scores.calculated_creator += 2; }
+      else if (val >= 5) { scores.freedom_architect += 2; scores.resilient_optimizer += 2; }
+      else { scores.steady_guardian += 3; scores.quiet_strategist += 2; scores.family_sovereign += 2; }
+    }
+
+    if (cat === "goals") {
+      if (val >= 8) { scores.legacy_builder += 3; scores.calculated_creator += 2; }
+      else if (val >= 5) { scores.resilient_optimizer += 2; scores.bold_weaver += 2; }
+      else { scores.sovereign_minimalist += 3; scores.freedom_architect += 2; }
+    }
+
+    if (cat === "decision_style") {
+      if (val >= 8) { scores.calculated_creator += 3; scores.quiet_strategist += 2; }
+      else if (val >= 5) { scores.resilient_optimizer += 2; scores.bold_weaver += 2; }
+      else { scores.intuitive_alchemist += 3; scores.freedom_architect += 2; }
+    }
+
+    if (cat === "sensory") {
+      if (val >= 7) { scores.intuitive_alchemist += 2; scores.sovereign_minimalist += 2; }
+      else { scores.calculated_creator += 1; scores.resilient_optimizer += 1; }
+    }
+
+    if (cat === "future_self") {
+      if (val >= 8) { scores.legacy_builder += 2; scores.family_sovereign += 2; }
+      else if (val >= 5) { scores.bold_weaver += 2; scores.freedom_architect += 1; }
+      else { scores.sovereign_minimalist += 2; scores.steady_guardian += 1; }
+    }
+  }
+
+  let maxScore = 0;
+  let topGenome = "quiet_strategist";
+  for (const [genome, score] of Object.entries(scores)) {
+    if (score > maxScore) {
+      maxScore = score;
+      topGenome = genome;
+    }
+  }
+
+  return topGenome;
 }
 
 export default { registerRoutes };
