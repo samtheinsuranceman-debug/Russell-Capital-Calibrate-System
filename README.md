@@ -7,6 +7,8 @@ Complete architecture for the Russell Capital Calibrate System — multi-sensory
 - [DrBuddy + AltarAI Integration Architecture](docs/drbuddy-altar-link.md) — Bidirectional sync between health intelligence, agentic memory, and Wealth Genome
 - [Sheldrake Consciousness Evolution](docs/sheldrake-consciousness-evolution.md) — Intelligence vs. consciousness mapping across Sheldrake corpus → 200Q calibration
 - [Continuity Report 2026-05-19](docs/continuity-2026-05-19-russell.md) — Session wins, architecture state, next priorities
+- [Document Analysis Architecture](docs/document-analysis-architecture.md) — AlterAI reverse-engineered dual-AI skeptical analysis pipeline
+- [Mem0 Production Memory Architecture](docs/mem0-architecture.md) — Graph+embedding hybrid persistent memory layer across 7 platform namespaces
 
 ---
 
