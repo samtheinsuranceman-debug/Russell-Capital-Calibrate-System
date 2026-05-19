@@ -22,12 +22,12 @@ async function startServer() {
     });
   });
 
-  // Register calibration API routes
+  // Register all API routes
   const apiRouter = express.Router();
   registerRoutes(apiRouter);
   app.use("/api", apiRouter);
 
-  // Production static files
+  // Production static serving
   if (process.env.NODE_ENV === "production") {
     const staticPath = path.resolve(__dirname, "public");
     app.use(express.static(staticPath));
@@ -36,7 +36,7 @@ async function startServer() {
     });
   }
 
-  const port = parseInt(process.env.API_PORT || "3001", 10);
+  const port = parseInt(process.env.PORT || "3001", 10);
   server.listen(port, () => {
     console.log(`[RCS API] Server running on http://localhost:${port}/`);
   });
