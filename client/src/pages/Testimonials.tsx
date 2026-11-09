@@ -120,7 +120,7 @@ export default function Testimonials() {
       <section className="pt-28 pb-16 container">
         <div className="text-center space-y-4 max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-            Physician <span className="text-primary text-glow">Testimonials</span>
+            Physician <span className="text-link text-glow">Testimonials</span>
           </h1>
           <p className="text-lg text-muted-foreground">
             Hear directly from physicians who have transformed their financial futures with our patent-pending tax elimination engines.
@@ -154,7 +154,7 @@ export default function Testimonials() {
                   <Star key={i} size={14} className="text-yellow-500 fill-yellow-500" />
                 ))}
               </div>
-              <Quote size={20} className="text-primary/30" />
+              <Quote size={20} className="text-link/30" />
               <p className="text-sm text-muted-foreground leading-relaxed flex-1">{t.quote}</p>
               <div className="pt-3 border-t border-border/50">
                 <div className="flex items-center justify-between">
@@ -162,7 +162,7 @@ export default function Testimonials() {
                     <p className="text-sm font-semibold text-foreground">{t.name}</p>
                     <p className="text-xs text-muted-foreground">{t.specialty} — {t.city}</p>
                   </div>
-                  <span className="text-xs font-mono text-primary bg-primary/10 px-2 py-1 rounded">
+                  <span className="text-xs font-mono text-link bg-primary/10 px-2 py-1 rounded">
                     {t.savings}
                   </span>
                 </div>

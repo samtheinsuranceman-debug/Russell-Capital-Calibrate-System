@@ -30,12 +30,9 @@ export function ThemeProvider({
   });
 
   useEffect(() => {
+    // Russell Living themes live on <html data-theme>: "dark" is the forest theme, "light" is ivory.
     const root = document.documentElement;
-    if (theme === "dark") {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
+    root.setAttribute("data-theme", theme === "dark" ? "forest" : "ivory");
 
     if (switchable) {
       localStorage.setItem("theme", theme);

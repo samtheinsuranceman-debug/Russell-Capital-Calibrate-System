@@ -60,7 +60,7 @@ function TaxSavingsCalculator() {
           <div className="pt-2 text-center">
             <p className="text-xs text-muted-foreground">Estimated Annual Tax Savings</p>
             <p className="stat-number text-3xl mt-1">${result.toLocaleString()}</p>
-            <Link href="/contact" className="inline-flex items-center gap-1 text-xs text-primary mt-2 hover:underline">
+            <Link href="/contact" className="inline-flex items-center gap-1 text-xs text-link mt-2 hover:underline">
               See your full optimization plan <ArrowRight size={12} />
             </Link>
           </div>
@@ -84,11 +84,11 @@ export default function Home() {
             <div className="lg:col-span-3 space-y-6">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10 border border-primary/20 rounded-full">
                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                <span className="text-xs text-primary font-medium">15 Patent-Pending Financial Engines</span>
+                <span className="text-xs text-link font-medium">15 Patent-Pending Financial Engines</span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] tracking-tight">
                 Physicians Pay<br />
-                <span className="text-primary text-glow">Zero Taxes.</span><br />
+                <span className="text-link text-glow">Zero Taxes.</span><br />
                 <span className="text-muted-foreground text-3xl md:text-4xl lg:text-5xl">We Engineered It.</span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
@@ -101,7 +101,7 @@ export default function Home() {
                 <Link href="/case-studies" className="inline-flex items-center gap-2 px-6 py-3 border border-border text-foreground font-medium rounded-lg hover:bg-accent transition-all">
                   See Results
                 </Link>
-                <Link href="/calibrate" className="inline-flex items-center gap-2 px-6 py-3 border border-primary/40 text-primary font-medium rounded-lg hover:bg-primary/10 transition-all">
+                <Link href="/calibrate" className="inline-flex items-center gap-2 px-6 py-3 border border-primary/40 text-link font-medium rounded-lg hover:bg-primary/10 transition-all">
                   <Zap size={16} /> Discover Your Wealth Genome
                 </Link>
               </div>
@@ -124,7 +124,7 @@ export default function Home() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {STATS.map((stat) => (
               <div key={stat.label} className="text-center space-y-2">
-                <stat.icon size={20} className="mx-auto text-primary/70" />
+                <stat.icon size={20} className="mx-auto text-link/70" />
                 <p className="stat-number text-2xl md:text-3xl">{stat.value}</p>
                 <p className="text-xs text-muted-foreground">{stat.label}</p>
               </div>
@@ -147,7 +147,7 @@ export default function Home() {
           {SERVICES_PREVIEW.map((service) => (
             <div key={service.title} className="glow-card p-6 space-y-3">
               <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
-                <service.icon size={18} className="text-primary" />
+                <service.icon size={18} className="text-link" />
               </div>
               <h3 className="text-lg font-semibold text-foreground">{service.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{service.desc}</p>
@@ -155,7 +155,7 @@ export default function Home() {
           ))}
         </div>
         <div className="text-center mt-10">
-          <Link href="/services" className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:underline">
+          <Link href="/services" className="inline-flex items-center gap-2 text-link text-sm font-medium hover:underline">
             Explore All Services <ArrowRight size={14} />
           </Link>
         </div>
@@ -170,7 +170,7 @@ export default function Home() {
         <div className="relative container py-20 lg:py-28">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Built Exclusively for <span className="text-primary">Physicians</span>
+              Built Exclusively for <span className="text-link">Physicians</span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
               You spent 12+ years training to save lives. You shouldn't spend another decade figuring out how to keep what you earn. Our patent-pending engines are calibrated specifically for physician income patterns, student loan structures, and practice ownership models.
@@ -216,7 +216,7 @@ export default function Home() {
           ))}
         </div>
         <div className="text-center mt-8">
-          <Link href="/testimonials" className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:underline">
+          <Link href="/testimonials" className="inline-flex items-center gap-2 text-link text-sm font-medium hover:underline">
             Read All Testimonials <ArrowRight size={14} />
           </Link>
         </div>
@@ -226,7 +226,7 @@ export default function Home() {
       <section className="border-t border-border/50 bg-card/30">
         <div className="container py-20 text-center space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Ready to Pay <span className="text-primary text-glow">Zero Taxes</span>?
+            Ready to Pay <span className="text-link text-glow">Zero Taxes</span>?
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
             Book a complimentary 30-minute physician wealth assessment. We'll show you exactly how much you can save.

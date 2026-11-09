@@ -76,7 +76,7 @@ export default function Advisors() {
       <section className="pt-28 pb-16 container">
         <div className="text-center space-y-4 max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-            Your <span className="text-primary text-glow">Advisory Team</span>
+            Your <span className="text-link text-glow">Advisory Team</span>
           </h1>
           <p className="text-lg text-muted-foreground">
             Specialized physician wealth advisors with combined 59+ years of experience and $847M+ in tax savings engineered.
@@ -94,7 +94,7 @@ export default function Advisors() {
             { icon: BookOpen, stat: "15", label: "Patent Applications" },
           ].map((item) => (
             <div key={item.label} className="glow-card p-4 text-center space-y-2">
-              <item.icon size={18} className="mx-auto text-primary" />
+              <item.icon size={18} className="mx-auto text-link" />
               <p className="stat-number text-xl">{item.stat}</p>
               <p className="text-xs text-muted-foreground">{item.label}</p>
             </div>
@@ -111,11 +111,11 @@ export default function Advisors() {
                 {/* Left - Identity */}
                 <div className="lg:col-span-4 space-y-4">
                   <div className="w-16 h-16 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center">
-                    <Briefcase size={24} className="text-primary" />
+                    <Briefcase size={24} className="text-link" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-foreground">{advisor.name}</h3>
-                    <p className="text-sm text-primary">{advisor.title}</p>
+                    <p className="text-sm text-link">{advisor.title}</p>
                     <p className="text-xs text-muted-foreground mt-1">{advisor.specialty}</p>
                   </div>
                   <div className="space-y-1.5 pt-2">
@@ -138,7 +138,7 @@ export default function Advisors() {
                     <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-2">Areas of Focus</p>
                     <div className="flex flex-wrap gap-2">
                       {advisor.focus.map((f) => (
-                        <span key={f} className="px-2.5 py-1 text-xs bg-primary/10 border border-primary/20 text-primary rounded-md">
+                        <span key={f} className="px-2.5 py-1 text-xs bg-primary/10 border border-primary/20 text-link rounded-md">
                           {f}
                         </span>
                       ))}

@@ -1,0 +1,72 @@
+/* Russell Living — Tailwind v4 theme. Place after @import "tailwindcss"; and @import "./tokens.css"; */
+@custom-variant ivory (&:is([data-theme="ivory"] *));
+@custom-variant navy (&:is([data-theme="navy"] *));
+
+@theme inline {
+  --color-ground: var(--ground);
+  --color-ground-deep: var(--ground-deep);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-glass-line: var(--glass-line);
+  --color-scrim: var(--scrim);
+  --color-on-scrim: var(--on-scrim);
+  --color-ink: var(--ink);
+  --color-ink-body: var(--ink-body);
+  --color-ink-muted: var(--ink-muted);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-gold-soft: var(--gold-soft);
+  --color-on-gold: var(--on-gold);
+  --color-money: var(--money);
+  --color-presence: var(--presence);
+  --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
+  --color-forest-soft: var(--forest-soft);
+  --color-on-forest: var(--on-forest);
+  --color-link: var(--link);
+  --color-signal: var(--signal);
+  --color-focus: var(--focus);
+  --color-calculate: var(--calculate);
+  --color-calculate-deep: var(--calculate-deep);
+  --color-on-calculate: var(--on-calculate);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-caution: var(--caution);
+  --color-caution-soft: var(--caution-soft);
+  --color-sky: var(--sky);
+  --color-mood-calm: var(--mood-calm);
+  --color-mood-mega: var(--mood-mega);
+  --color-mood-alert: var(--mood-alert);
+  --color-mood-excitement: var(--mood-excitement);
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-pill: var(--radius-pill);
+  --shadow-card: var(--shadow-card);
+  --shadow-glass: var(--shadow-glass);
+  --shadow-action: var(--shadow-action);
+  --shadow-presence: var(--shadow-presence);
+  --shadow-window: var(--shadow-window);
+  --shadow-start: var(--shadow-start);
+  --shadow-pulse: var(--shadow-pulse);
+  --font-display: var(--font-display);
+  --font-ui: var(--font-ui);
+  --font-mono: var(--font-mono);
+  --breakpoint-reading: 1024px;
+}
+
+/* The homepage's reading mode: the whole page at 1.6x. */
+.reading-mode { font-size: 1.6rem; line-height: 1.5; }
+.reading-mode .text-xs { font-size: 1.2rem; line-height: 1.75rem; }
+.reading-mode .text-sm { font-size: 1.4rem; line-height: 2rem; }
+.reading-mode .text-base { font-size: 1.6rem; line-height: 2.35rem; }
+.reading-mode .text-lg { font-size: 1.8rem; line-height: 2.5rem; }
+.reading-mode .text-xl { font-size: 2rem; line-height: 2.7rem; }
+.reading-mode .text-2xl { font-size: 2.4rem; line-height: 3rem; }
+.reading-mode .text-3xl { font-size: 3rem; line-height: 3.6rem; }
+.reading-mode .text-5xl { font-size: 4.8rem; line-height: 1.02; }

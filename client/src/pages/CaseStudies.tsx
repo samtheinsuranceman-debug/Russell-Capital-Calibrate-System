@@ -165,7 +165,7 @@ export default function CaseStudies() {
         </div>
         <div className="relative container text-center space-y-4 max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-            Physician <span className="text-primary text-glow">Case Studies</span>
+            Physician <span className="text-link text-glow">Case Studies</span>
           </h1>
           <p className="text-lg text-muted-foreground">
             Real results from real physicians. All case studies use anonymized initials and city per our privacy policy. These represent deceased or no-longer-licensed practitioners whose outcomes are documented and verifiable.
@@ -182,24 +182,24 @@ export default function CaseStudies() {
                 {/* Left - Identity */}
                 <div className="lg:col-span-3 space-y-3">
                   <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center">
-                    <span className="text-lg font-bold text-primary">{cs.initials.replace("Dr. ", "")}</span>
+                    <span className="text-lg font-bold text-link">{cs.initials.replace("Dr. ", "")}</span>
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-foreground">{cs.initials}</h3>
-                    <p className="text-sm text-primary">{cs.specialty}</p>
+                    <p className="text-sm text-link">{cs.specialty}</p>
                     <p className="text-xs text-muted-foreground">{cs.city}</p>
                   </div>
                   <div className="space-y-1.5 pt-2">
                     <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <DollarSign size={12} className="text-primary" />
+                      <DollarSign size={12} className="text-link" />
                       <span>Income: {cs.income}</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <Target size={12} className="text-primary" />
+                      <Target size={12} className="text-link" />
                       <span>Debt: {cs.studentDebt}</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <Clock size={12} className="text-primary" />
+                      <Clock size={12} className="text-link" />
                       <span>{cs.timeline}</span>
                     </div>
                   </div>
@@ -214,11 +214,11 @@ export default function CaseStudies() {
                     </div>
                     <div className="bg-primary/10 border border-primary/20 rounded-lg p-3 text-center">
                       <p className="text-xs text-muted-foreground mb-1">Tax After</p>
-                      <p className="text-lg font-bold text-primary font-mono">{cs.taxAfter}</p>
+                      <p className="text-lg font-bold text-link font-mono">{cs.taxAfter}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 bg-card border border-border/50 rounded-lg p-3">
-                    <TrendingUp size={16} className="text-primary shrink-0" />
+                    <TrendingUp size={16} className="text-link shrink-0" />
                     <div>
                       <p className="text-xs text-muted-foreground">Total Savings</p>
                       <p className="stat-number text-lg">{cs.totalSavings}</p>
@@ -232,7 +232,7 @@ export default function CaseStudies() {
                   <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Strategies Deployed</p>
                   <div className="flex flex-wrap gap-2">
                     {cs.strategies.map((s) => (
-                      <span key={s} className="px-2.5 py-1 text-xs bg-primary/10 border border-primary/20 text-primary rounded-md">
+                      <span key={s} className="px-2.5 py-1 text-xs bg-primary/10 border border-primary/20 text-link rounded-md">
                         {s}
                       </span>
                     ))}

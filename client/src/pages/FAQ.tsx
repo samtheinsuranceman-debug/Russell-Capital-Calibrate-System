@@ -96,7 +96,7 @@ function FAQAccordion({ item }: { item: FAQItem }) {
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between py-5 text-left group"
       >
-        <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors pr-4">
+        <span className="text-sm font-medium text-foreground group-hover:text-link transition-colors pr-4">
           {item.question}
         </span>
         <ChevronDown
@@ -127,7 +127,7 @@ export default function FAQ() {
       <section className="pt-28 pb-16 container">
         <div className="text-center space-y-4 max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-            Frequently Asked <span className="text-primary text-glow">Questions</span>
+            Frequently Asked <span className="text-link text-glow">Questions</span>
           </h1>
           <p className="text-lg text-muted-foreground">
             Everything physicians ask before starting their tax-free wealth journey.

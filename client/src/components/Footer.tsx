@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-primary/20 border border-primary/40 flex items-center justify-center">
-                <Shield size={16} className="text-primary" />
+                <Shield size={16} className="text-link" />
               </div>
               <div>
                 <p className="text-sm font-bold text-foreground">Russell Capital Solutions</p>
@@ -27,7 +27,7 @@ export default function Footer() {
             <h4 className="text-sm font-semibold text-foreground">Services</h4>
             <div className="space-y-2">
               {["Infinite Banking", "Roth Conversion Ladders", "Captive Insurance", "Student Loan Optimizer", "Estate Planning", "Tax-Free Retirement"].map((s) => (
-                <Link key={s} href="/services" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link key={s} href="/services" className="block text-sm text-muted-foreground hover:text-link transition-colors">
                   {s}
                 </Link>
               ))}
@@ -46,7 +46,7 @@ export default function Footer() {
                 { label: "FAQ", href: "/faq" },
                 { label: "Contact", href: "/contact" },
               ].map((item) => (
-                <Link key={item.href} href={item.href} className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link key={item.href} href={item.href} className="block text-sm text-muted-foreground hover:text-link transition-colors">
                   {item.label}
                 </Link>
               ))}
@@ -57,10 +57,10 @@ export default function Footer() {
           <div className="space-y-4">
             <h4 className="text-sm font-semibold text-foreground">Contact</h4>
             <div className="space-y-3">
-              <a href="mailto:sam@russellcapitalsolutions.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+              <a href="mailto:sam@russellcapitalsolutions.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-link transition-colors">
                 <Mail size={14} /> sam@russellcapitalsolutions.com
               </a>
-              <a href="tel:+1-555-0199" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+              <a href="tel:+1-555-0199" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-link transition-colors">
                 <Phone size={14} /> (555) 019-9000
               </a>
               <p className="flex items-center gap-2 text-sm text-muted-foreground">

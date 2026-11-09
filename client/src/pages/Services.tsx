@@ -93,7 +93,7 @@ export default function Services() {
       <section className="pt-28 pb-16 container">
         <div className="text-center space-y-4 max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-            Tax-Free Wealth <span className="text-primary text-glow">Services</span>
+            Tax-Free Wealth <span className="text-link text-glow">Services</span>
           </h1>
           <p className="text-lg text-muted-foreground">
             Six core engines and nine supplementary strategies — all patent-pending, all integrated, all built exclusively for physician wealth optimization.
@@ -110,11 +110,11 @@ export default function Services() {
                 <div className="lg:col-span-7 space-y-4">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
-                      <service.icon size={18} className="text-primary" />
+                      <service.icon size={18} className="text-link" />
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-foreground">{service.title}</h3>
-                      <p className="text-sm text-primary">{service.subtitle}</p>
+                      <p className="text-sm text-link">{service.subtitle}</p>
                     </div>
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
@@ -146,7 +146,7 @@ export default function Services() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {ADDITIONAL_SERVICES.map((s) => (
               <div key={s.title} className="glow-card p-5 space-y-2">
-                <s.icon size={18} className="text-primary" />
+                <s.icon size={18} className="text-link" />
                 <h4 className="text-sm font-semibold text-foreground">{s.title}</h4>
                 <p className="text-xs text-muted-foreground leading-relaxed">{s.desc}</p>
               </div>
@@ -160,7 +160,7 @@ export default function Services() {
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
             <h2 className="text-3xl font-bold text-foreground">
-              <span className="text-primary">15</span> Patent-Pending Engines
+              <span className="text-link">15</span> Patent-Pending Engines
             </h2>
             <p className="text-muted-foreground leading-relaxed">
               Russell Capital Solutions has filed 15 patent applications covering our proprietary financial optimization algorithms. These engines work together as an integrated system — each one amplifying the others.
@@ -168,7 +168,7 @@ export default function Services() {
             <div className="space-y-2 max-h-80 overflow-y-auto pr-2">
               {PATENTS.map((p) => (
                 <div key={p} className="flex items-start gap-2 py-1.5 border-b border-border/30">
-                  <Brain size={12} className="text-primary mt-1 shrink-0" />
+                  <Brain size={12} className="text-link mt-1 shrink-0" />
                   <span className="text-xs text-muted-foreground">{p}</span>
                 </div>
               ))}
@@ -191,7 +191,7 @@ export default function Services() {
             </div>
             <div className="space-y-6 order-1 lg:order-2">
               <h2 className="text-3xl font-bold text-foreground">
-                The Infinite Banking <span className="text-primary">Wealth Tree</span>
+                The Infinite Banking <span className="text-link">Wealth Tree</span>
               </h2>
               <p className="text-muted-foreground leading-relaxed">
                 Like a tree with deep roots and ever-growing branches, Infinite Banking creates a self-sustaining financial ecosystem. Your policy cash value grows tax-free, provides tax-free loans for investments, and passes tax-free to your heirs — all while you maintain control.

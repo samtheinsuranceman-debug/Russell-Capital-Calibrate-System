@@ -69,7 +69,7 @@ export default function Contact() {
         <section className="pt-28 pb-20 container">
           <div className="max-w-lg mx-auto text-center space-y-6">
             <div className="w-16 h-16 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center mx-auto">
-              <CheckCircle size={28} className="text-primary" />
+              <CheckCircle size={28} className="text-link" />
             </div>
             <h1 className="text-3xl font-bold text-foreground">Assessment Requested</h1>
             <p className="text-muted-foreground">
@@ -85,7 +85,7 @@ export default function Contact() {
                   "No obligation — just information and strategy",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-2">
-                    <CheckCircle size={14} className="text-primary mt-0.5 shrink-0" />
+                    <CheckCircle size={14} className="text-link mt-0.5 shrink-0" />
                     <span className="text-sm text-muted-foreground">{item}</span>
                   </div>
                 ))}
@@ -106,7 +106,7 @@ export default function Contact() {
       <section className="pt-28 pb-12 container">
         <div className="text-center space-y-4 max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-            Book Your Free <span className="text-primary text-glow">Assessment</span>
+            Book Your Free <span className="text-link text-glow">Assessment</span>
           </h1>
           <p className="text-lg text-muted-foreground">
             30 minutes. No obligation. We'll show you exactly how much you can save.
@@ -234,7 +234,7 @@ export default function Contact() {
                   { icon: Mail, text: "Written summary within 48 hours" },
                 ].map((item) => (
                   <div key={item.text} className="flex items-center gap-3">
-                    <item.icon size={14} className="text-primary shrink-0" />
+                    <item.icon size={14} className="text-link shrink-0" />
                     <span className="text-sm text-muted-foreground">{item.text}</span>
                   </div>
                 ))}
@@ -244,14 +244,14 @@ export default function Contact() {
             <div className="glow-card p-5 space-y-4">
               <h3 className="text-sm font-semibold text-foreground">Direct Contact</h3>
               <div className="space-y-3">
-                <a href="mailto:sam@russellcapitalsolutions.com" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors">
-                  <Mail size={14} className="text-primary" /> sam@russellcapitalsolutions.com
+                <a href="mailto:sam@russellcapitalsolutions.com" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-link transition-colors">
+                  <Mail size={14} className="text-link" /> sam@russellcapitalsolutions.com
                 </a>
-                <a href="tel:+15550199000" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors">
-                  <Phone size={14} className="text-primary" /> (555) 019-9000
+                <a href="tel:+15550199000" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-link transition-colors">
+                  <Phone size={14} className="text-link" /> (555) 019-9000
                 </a>
                 <p className="flex items-center gap-3 text-sm text-muted-foreground">
-                  <MapPin size={14} className="text-primary" /> Nationwide — Virtual & In-Person
+                  <MapPin size={14} className="text-link" /> Nationwide — Virtual & In-Person
                 </p>
               </div>
             </div>
@@ -263,7 +263,7 @@ export default function Contact() {
                 href="https://calendly.com/samtheinsuranceman-1/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-center py-2.5 border border-primary text-primary text-sm font-medium rounded-lg hover:bg-primary/10 transition-all"
+                className="block text-center py-2.5 border border-primary text-link text-sm font-medium rounded-lg hover:bg-primary/10 transition-all"
               >
                 Open Calendly
               </a>

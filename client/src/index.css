@@ -1,13 +1,12 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "./tokens.css";
+@import "./tailwind-theme.css";
 
-@custom-variant dark (&:is(.dark *));
+/* Dark-mode variants key on the two dark themes (forest, navy) and on the legacy .dark class. */
+@custom-variant dark (&:is([data-theme="forest"] *, [data-theme="navy"] *, .dark *));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -40,46 +39,43 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --color-emerald: oklch(0.76 0.18 160);
-  --color-emerald-dim: oklch(0.55 0.15 160);
-  --color-cyan-accent: oklch(0.72 0.12 210);
-  --color-gold: oklch(0.78 0.12 80);
 }
 
+/* shadcn/ui bridge: every shadcn role resolves to a Russell Living token, so the
+   components follow whichever theme is set on <html data-theme>. */
 :root {
-  --radius: 0.5rem;
-  --background: oklch(0.11 0.015 260);
-  --foreground: oklch(0.95 0.005 260);
-  --card: oklch(0.15 0.015 260);
-  --card-foreground: oklch(0.92 0.005 260);
-  --popover: oklch(0.15 0.015 260);
-  --popover-foreground: oklch(0.92 0.005 260);
-  --primary: oklch(0.76 0.18 160);
-  --primary-foreground: oklch(0.11 0.015 260);
-  --secondary: oklch(0.20 0.015 260);
-  --secondary-foreground: oklch(0.85 0.005 260);
-  --muted: oklch(0.18 0.01 260);
-  --muted-foreground: oklch(0.60 0.02 260);
-  --accent: oklch(0.20 0.02 260);
-  --accent-foreground: oklch(0.92 0.005 260);
-  --destructive: oklch(0.60 0.22 25);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.25 0.015 260);
-  --input: oklch(0.22 0.015 260);
-  --ring: oklch(0.76 0.18 160);
-  --chart-1: oklch(0.76 0.18 160);
-  --chart-2: oklch(0.72 0.12 210);
-  --chart-3: oklch(0.78 0.12 80);
-  --chart-4: oklch(0.65 0.15 280);
-  --chart-5: oklch(0.70 0.20 140);
-  --sidebar: oklch(0.13 0.015 260);
-  --sidebar-foreground: oklch(0.92 0.005 260);
-  --sidebar-primary: oklch(0.76 0.18 160);
-  --sidebar-primary-foreground: oklch(0.11 0.015 260);
-  --sidebar-accent: oklch(0.20 0.02 260);
-  --sidebar-accent-foreground: oklch(0.92 0.005 260);
-  --sidebar-border: oklch(0.25 0.015 260);
-  --sidebar-ring: oklch(0.76 0.18 160);
+  --background: var(--ground);
+  --foreground: var(--ink-body);
+  --card: var(--surface);
+  --card-foreground: var(--ink-body);
+  --popover: var(--surface-raised);
+  --popover-foreground: var(--ink-body);
+  --primary: var(--forest);
+  --primary-foreground: var(--on-forest);
+  --secondary: var(--surface-raised);
+  --secondary-foreground: var(--ink);
+  --muted: var(--surface-raised);
+  --muted-foreground: var(--ink-muted);
+  --accent: var(--forest-soft);
+  --accent-foreground: var(--link);
+  --destructive: var(--danger);
+  --destructive-foreground: var(--on-forest);
+  --border: var(--line);
+  --input: var(--surface);
+  --ring: var(--focus);
+  --chart-1: var(--link);
+  --chart-2: var(--sky);
+  --chart-3: var(--gold);
+  --chart-4: var(--mood-excitement);
+  --chart-5: var(--signal);
+  --sidebar: var(--ground-deep);
+  --sidebar-foreground: var(--ink-body);
+  --sidebar-primary: var(--forest);
+  --sidebar-primary-foreground: var(--on-forest);
+  --sidebar-accent: var(--forest-soft);
+  --sidebar-accent-foreground: var(--link);
+  --sidebar-border: var(--line);
+  --sidebar-ring: var(--focus);
 }
 
 @layer base {
@@ -88,7 +84,11 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-ui);
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -128,38 +128,38 @@
     .container {
       padding-left: 2rem;
       padding-right: 2rem;
-      max-width: 1280px;
+      max-width: var(--container-max);
     }
   }
 
-  /* Glow card effect */
+  /* Glow card: a surface whose border breathes toward signal on hover */
   .glow-card {
     position: relative;
-    background: oklch(0.15 0.015 260);
-    border: 1px solid oklch(0.25 0.015 260);
-    border-radius: 0.75rem;
-    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    transition: border-color 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1), transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .glow-card:hover {
-    border-color: oklch(0.76 0.18 160 / 0.5);
-    box-shadow: 0 0 30px oklch(0.76 0.18 160 / 0.1), inset 0 1px 0 oklch(0.76 0.18 160 / 0.1);
+    border-color: color-mix(in srgb, var(--signal) 50%, transparent);
+    box-shadow: var(--shadow-pulse), inset 0 1px 0 color-mix(in srgb, var(--signal) 10%, transparent);
     transform: translateY(-2px);
   }
 
-  /* Grid background */
+  /* Grid background drawn in the hairline color */
   .grid-bg {
-    background-image: 
-      linear-gradient(oklch(0.25 0.015 260 / 0.3) 1px, transparent 1px),
-      linear-gradient(90deg, oklch(0.25 0.015 260 / 0.3) 1px, transparent 1px);
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 
-  /* Emerald glow text */
+  /* Signal glow on emphasized text */
   .text-glow {
-    text-shadow: 0 0 20px oklch(0.76 0.18 160 / 0.5);
+    text-shadow: 0 0 20px color-mix(in srgb, var(--signal) 50%, transparent);
   }
 
-  /* Gradient border */
+  /* Gradient border from signal to sky */
   .gradient-border {
     position: relative;
     border: 1px solid transparent;
@@ -170,16 +170,18 @@
     position: absolute;
     inset: -1px;
     border-radius: inherit;
-    background: linear-gradient(135deg, oklch(0.76 0.18 160 / 0.4), oklch(0.72 0.12 210 / 0.4), transparent);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--signal) 40%, transparent), color-mix(in srgb, var(--sky) 40%, transparent), transparent);
     z-index: -1;
   }
 
-  /* Stat number style */
+  /* Figures: mono, tabular, in money */
   .stat-number {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-mono);
     font-weight: 700;
-    color: oklch(0.76 0.18 160);
-    text-shadow: 0 0 15px oklch(0.76 0.18 160 / 0.4);
+    font-variant-numeric: tabular-nums lining-nums;
+    letter-spacing: -0.02em;
+    color: var(--money);
+    text-shadow: 0 0 15px color-mix(in srgb, var(--money) 35%, transparent);
   }
 }
 
@@ -193,12 +195,12 @@ html {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: oklch(0.11 0.015 260);
+  background: var(--ground);
 }
 ::-webkit-scrollbar-thumb {
-  background: oklch(0.30 0.015 260);
+  background: var(--surface-raised);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.40 0.015 260);
+  background: var(--line-strong);
 }
