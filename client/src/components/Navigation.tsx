@@ -24,7 +24,7 @@ export default function Navigation() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <div className="w-8 h-8 rounded-lg bg-primary/20 border border-primary/40 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-            <Shield size={16} className="text-primary" />
+            <Shield size={16} className="text-link" />
           </div>
           <div className="flex flex-col">
             <span className="text-sm font-bold text-foreground leading-tight tracking-tight">Russell Capital</span>
@@ -42,7 +42,7 @@ export default function Navigation() {
                 link.highlight
                   ? "text-emerald-400 bg-emerald-400/10 border border-emerald-400/30 font-medium hover:bg-emerald-400/20"
                   : location === link.href
-                    ? "text-primary bg-primary/10 font-medium"
+                    ? "text-link bg-primary/10 font-medium"
                     : "text-muted-foreground hover:text-foreground hover:bg-accent"
               }`}
             >
@@ -81,7 +81,7 @@ export default function Navigation() {
                 onClick={() => setMobileOpen(false)}
                 className={`block px-3 py-2.5 text-sm rounded-md transition-colors ${
                   location === link.href
-                    ? "text-primary bg-primary/10 font-medium"
+                    ? "text-link bg-primary/10 font-medium"
                     : "text-muted-foreground hover:text-foreground hover:bg-accent"
                 }`}
               >

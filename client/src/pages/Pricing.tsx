@@ -109,10 +109,10 @@ export default function Pricing() {
       <section className="pt-28 pb-16 container">
         <div className="text-center space-y-4 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10 border border-primary/20 rounded-full">
-            <span className="text-xs text-primary font-medium">Transparent Pricing — No Hidden Fees</span>
+            <span className="text-xs text-link font-medium">Transparent Pricing — No Hidden Fees</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-            License the <span className="text-primary text-glow">Tax-Free Wealth Platform</span>
+            License the <span className="text-link text-glow">Tax-Free Wealth Platform</span>
           </h1>
           <p className="text-lg text-muted-foreground">
             Add patent-pending tax elimination engines to your advisory practice. Every dollar your clients save strengthens your retention and AUM growth.
@@ -139,7 +139,7 @@ export default function Pricing() {
               )}
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <plan.icon size={20} className="text-primary" />
+                  <plan.icon size={20} className="text-link" />
                   <h3 className="text-lg font-bold text-foreground">{plan.name}</h3>
                 </div>
                 <div className="flex items-baseline gap-1">
@@ -147,14 +147,14 @@ export default function Pricing() {
                   <span className="text-sm text-muted-foreground">{plan.period}</span>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  {plan.annualPrice}/yr billed annually · <span className="text-primary">{plan.annualSavings}</span>
+                  {plan.annualPrice}/yr billed annually · <span className="text-link">{plan.annualSavings}</span>
                 </p>
                 <p className="text-sm text-muted-foreground leading-relaxed">{plan.description}</p>
               </div>
               <div className="space-y-2.5">
                 {plan.features.map((f) => (
                   <div key={f} className="flex items-start gap-2">
-                    <Check size={14} className="text-primary mt-0.5 shrink-0" />
+                    <Check size={14} className="text-link mt-0.5 shrink-0" />
                     <span className="text-sm text-muted-foreground">{f}</span>
                   </div>
                 ))}
@@ -209,7 +209,7 @@ export default function Pricing() {
               <tr className="border-b border-border">
                 <th className="text-left py-3 px-4 text-muted-foreground font-medium">Feature</th>
                 <th className="text-center py-3 px-4 text-muted-foreground font-medium">Starter</th>
-                <th className="text-center py-3 px-4 text-primary font-medium">Professional</th>
+                <th className="text-center py-3 px-4 text-link font-medium">Professional</th>
                 <th className="text-center py-3 px-4 text-muted-foreground font-medium">Enterprise</th>
               </tr>
             </thead>
@@ -220,7 +220,7 @@ export default function Pricing() {
                   {[row.starter, row.pro, row.enterprise].map((val, i) => (
                     <td key={i} className="text-center py-3 px-4">
                       {val === true ? (
-                        <Check size={16} className="mx-auto text-primary" />
+                        <Check size={16} className="mx-auto text-link" />
                       ) : val === false ? (
                         <span className="text-muted-foreground/40">—</span>
                       ) : (
@@ -242,7 +242,7 @@ export default function Pricing() {
           <p className="text-sm text-muted-foreground leading-relaxed">
             If you don't generate at least $50,000 in new client tax savings within your first 90 days using our platform, we'll refund your entire investment. No questions asked. We've never had to issue this refund.
           </p>
-          <Link href="/contact" className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:underline">
+          <Link href="/contact" className="inline-flex items-center gap-2 text-link text-sm font-medium hover:underline">
             Start Risk-Free <ArrowRight size={14} />
           </Link>
         </div>
